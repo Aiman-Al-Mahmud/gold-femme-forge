@@ -36,14 +36,14 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-primary">
       <div className="container-custom mx-auto">
         <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+          <span className="text-gold font-semibold text-sm uppercase tracking-wider">
             Get In Touch
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-2">
-            Contact <span className="text-primary">Us</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mt-2">
+            Contact <span className="text-gold">Us</span>
           </h2>
         </div>
 
