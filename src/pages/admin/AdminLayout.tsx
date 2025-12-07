@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Wgym_logo.png";
 
 const menuItems = [
   { name: "Dashboard", path: "/admin/dashboard", icon: LayoutDashboard },

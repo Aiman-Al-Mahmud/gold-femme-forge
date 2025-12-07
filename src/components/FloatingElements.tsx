@@ -23,7 +23,7 @@ export default function FloatingElements() {
       <div className="fixed left-4 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-3">
         {/* Facebook */}
         <a
-          href="https://facebook.com/womensgoldgym"
+          href="https://www.facebook.com/wgyg.khl"
           target="_blank"
           rel="noopener noreferrer"
           className="w-12 h-12 bg-[#1877F2] hover:bg-[#1877F2]/90 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
@@ -63,7 +63,7 @@ export default function FloatingElements() {
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed left-4 bottom-8 z-50 w-12 h-12 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
+        className={`fixed right-4 bottom-8 z-50 w-12 h-12 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 ${
           showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-4 pointer-events-none"

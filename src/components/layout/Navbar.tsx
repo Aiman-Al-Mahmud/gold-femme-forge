@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Wgym_logo.png";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -40,10 +40,10 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Women's Gold Gym" className="h-14 w-auto" />
             <div className="hidden sm:block">
-              <h1 className="font-display text-xl font-bold text-foreground leading-tight">
+              <h1 className="font-display text-xl font-bold text-gold leading-tight">
                 Women's Gold Gym
               </h1>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-pink-400">
                 Multi, Yoga & Aerobic
               </p>
             </div>

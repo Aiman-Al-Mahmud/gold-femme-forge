@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/Wgym_logo.png";
 
 const ADMIN_CREDENTIALS = {
   email: "wgyg.khl@gmail.com",
