@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Dumbbell, Heart, Music, Zap } from "lucide-react";
 import fitnessModel from "@/assets/yoga4.jpg";
 
@@ -29,12 +30,34 @@ const programs = [
 ];
 
 export default function ProgramsSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section-padding bg-secondary/30">
+    <section ref={sectionRef} className="section-padding bg-secondary/30">
       <div className="container-custom mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="order-2 lg:order-1">
+          <div className={`order-2 lg:order-1 transition-all duration-1000 ${
+            isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-20"
+          }`}>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Our Programs
             </span>
@@ -70,7 +93,9 @@ export default function ProgramsSection() {
           </div>
 
           {/* Image */}
-          <div className="order-1 lg:order-2 relative">
+          <div className={`order-1 lg:order-2 relative transition-all duration-1000 ${
+            isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-20"
+          }`}>
             <div className="relative z-10">
               <img
                 src={fitnessModel}

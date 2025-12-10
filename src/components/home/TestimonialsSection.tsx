@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import fitnessModel from "@/assets/fitness-model-2.jpg";
+import fitnessModel1 from "@/assets/tes3.jpg";
+import fitnessModel2 from "@/assets/tes2.jpg";
+import yoga5 from "@/assets/tes1.jpg";
 
 const testimonials = [
   {
@@ -9,6 +11,7 @@ const testimonials = [
     content:
       "Women's Gold Gym has completely transformed my life. The trainers are incredibly supportive and the women-only environment makes me feel so comfortable. I've lost 15 kgs and gained so much confidence!",
     rating: 5,
+    image: fitnessModel1,
   },
   {
     name: "Tahmina Akter",
@@ -16,6 +19,7 @@ const testimonials = [
     content:
       "The yoga classes here are amazing! The peaceful environment and expert instruction have helped me manage my stress and improve my flexibility. Highly recommend to all women in Khulna.",
     rating: 5,
+    image: yoga5,
   },
   {
     name: "Nasreen Sultana",
@@ -23,11 +27,41 @@ const testimonials = [
     content:
       "Best decision I ever made was joining this gym. The Zumba sessions are so fun and energetic. I look forward to every workout. The staff treats everyone like family.",
     rating: 5,
+    image: fitnessModel2,
   },
 ];
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Auto-play functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Intersection observer for scroll animations
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -38,11 +72,13 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="section-padding bg-muted">
+    <section ref={sectionRef} className="section-padding bg-muted">
       <div className="container-custom mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div>
+          <div className={`transition-all duration-1000 ${
+            isVisible ? "animate-slide-in-left" : "opacity-0 -translate-x-20"
+          }`}>
             <span className="text-primary font-semibold text-sm uppercase tracking-wider">
               Member Stories
             </span>
@@ -100,12 +136,15 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Image */}
-          <div className="relative hidden lg:block">
+          <div className={`relative transition-all duration-1000 ${
+            isVisible ? "animate-slide-in-right" : "opacity-0 translate-x-20"
+          }`}>
             <div className="relative z-10">
               <img
-                src={fitnessModel}
+                key={currentIndex}
+                src={testimonials[currentIndex].image}
                 alt="Happy fitness member"
-                className="w-full max-w-md mx-auto rounded-2xl shadow-xl"
+                className="w-full max-w-md mx-auto rounded-2xl shadow-xl transition-all duration-500 animate-fade-up"
               />
             </div>
             {/* Decorative elements */}
