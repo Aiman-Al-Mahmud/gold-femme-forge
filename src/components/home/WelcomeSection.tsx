@@ -1,4 +1,4 @@
-import fitnessModel from "@/assets/fitness-model-1.jpg";
+import fitnessModel from "@/assets/yoga.jpg";
 
 export default function WelcomeSection() {
   return (

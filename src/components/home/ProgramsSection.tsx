@@ -1,5 +1,5 @@
 import { Dumbbell, Heart, Music, Zap } from "lucide-react";
-import fitnessModel from "@/assets/fitness-model-1.jpg";
+import fitnessModel from "@/assets/yoga4.jpg";
 
 const programs = [
   {
